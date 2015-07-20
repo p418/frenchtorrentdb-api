@@ -1,0 +1,24 @@
+{
+	"group" : "series",
+	"exact"	: { "values": ["1", "2"], "default" : "1", "desc" : "1 = exact, 2 = etendu"},
+	"adv_cat" :
+	{
+		"s" : 
+		{
+			"1" : { "values" : ["95"], "default" : 	null, "desc" : "TV VF"},
+			"2" : { "values" : ["190"], "default" : null, "desc" : "TV HD FR"},
+			"3" : { "values" : ["101"], "default" : null, "desc" : "TV VOSTFR"},
+			"4" : { "values" : ["191"], "default" : null, "desc" : "TV HD VOSTFR"},
+			"5" : { "values" : ["197"], "default" : null, "desc" : "TV VO"},
+			"6" : { "values" : ["198"], "default" : null, "desc" : "DVD-R TV"},
+			"7" : { "values" : ["199"], "default" : null, "desc" : "TV PACK"},
+			"8" : { "values" : ["201"], "default" : null, "desc" : "TV VOSTA"}
+		}
+	},
+	"year" 			: null,
+	"year_end" 		: null,
+	"season"		: null,
+	"season_end"	: null,
+	"episode"		: null,
+	"episode_end"	: null
+}

@@ -1,0 +1,31 @@
+{
+  "name": "frenchtorrentdb-api",
+  "version": "0.0.1",
+  "description": "Frenchtorrent pseudo rest api",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter nyan"
+  },
+  "author": "p418",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.1",
+    "merge": "^1.2.0",
+    "promise": "^7.0.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p418/frenchtorrentdb-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/p418/frenchtorrentdb-api/issues"
+  },
+  "homepage": "https://github.com/p418/frenchtorrentdb-api#readme"
+}

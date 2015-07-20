@@ -1,0 +1,9 @@
+{
+	"host" 			: "http://www.frenchtorrentdb.com",
+	"endpoints" 	: 
+	{
+		"challenge"	: { "query" : { "section" : "LOGIN", "challenge" : "1" } },
+		"login"		: { "query" : { "section" : "LOGIN", "ajax" : "1" }},
+		"search"	: { "query" : { "section" : "TORRENTS", "ajax" : "1", "infinite" : "1"}}
+	}
+}
