@@ -12,7 +12,7 @@ describe('Search Engine', function()
 		param3 : null
 	};
 
-	var mySearch = new searchEngine(conf);
+	var mySearch = new searchEngine('search', conf);
 
 
 	it('should allow access to new attributes with default value', function()
@@ -55,7 +55,7 @@ describe('Search Engine', function()
 		{
 			mySearch.param3 = value;
 			mySearch.param3.should.equal(value);
-		})
+		});
 	});	
 
 	it('should construct querystring from parameters values', function()
@@ -81,13 +81,27 @@ describe('Search Engine', function()
 
 	it('should add new complex parameter', function()
 	{
-		mySearch.addParam('param5', { s : { 'a' : 'b', 'b' : 'c', 'c' : 'd' }});
-		//mySearch.param4.should.equal('test');
+		mySearch.addParam('param5', { s : { 
+												'a' : { values : ['a', 'b'], default : 'b'}, 
+												'b' : 'c',
+												'c' : 'd' 
+									}});
 
+		mySearch.param5.isList().should.be.true;
+		mySearch.param5.s.isList().should.be.true;
 
-		console.log(mySearch.param5)
+		mySearch.param5.s.a.should.equal('b');
+		mySearch.param5.s.b.should.equal('c');
+		mySearch.param5.s.c.should.equal('d');
+
+		mySearch.param5.s.a = 'c';
+		mySearch.param5.s.a.should.equal('b');
+
+		mySearch.param5.s.a = 'a';
+		mySearch.param5.s.a.should.equal('a');
+
+		mySearch.toString().should.equal('param1=value1&param3=value7&param4=test&param5%5Bs%5D%5Ba%5D=a&param5%5Bs%5D%5Bb%5D=c&param5%5Bs%5D%5Bc%5D=d');
 	});
-
 });
 
 

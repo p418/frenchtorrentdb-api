@@ -1,6 +1,5 @@
-var $merge = require('merge');
-var conf = module.exports = require('./global');
-conf.credentials = require('./credentials');
+module.exports = require('./global');
+//module.exports.credentials = require('./credentials');
 
 
 

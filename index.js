@@ -6,16 +6,23 @@ var $http = require('request'),
 	$url = require('url'),
 	$merge = require('merge');
 
-$http.debug = true;
+//$http.debug = true;
 
 
 
 function FTDBClient(conf)
 {
-	this.host 			= $url.parse(conf.host||'http://www.frenchtorrentdb.com');
-	this.endpoints 		= conf.endpoints;
-	this.credentials	= conf.credentials;
 
+	//fallback: if no conf provided, try to load default one
+	if(conf == void 0)
+	{
+		var conf  = require(__dirname+'/config');
+	}
+
+
+	this.host 			= $url.parse(conf.host||'http://www.frenchtorrentdb.com');
+	this.endpoints 		= conf.endpoints||{};
+	this.credentials	= conf.credentials||{};
 	this.cookieJar 		= $http.jar();
 	this.httpOptions	= 
 	{
@@ -116,9 +123,26 @@ FTDBClient.prototype =
 			})
 		});
 	},
+	setCredential : function(username, password)
+	{
+		this.credentials.username = username;
+		this.credentials.password = password;
+
+		return this;
+	},
+	loadCredential : function(filename)
+	{
+		this.credentials = require(process.cwd()+'/'+filename);
+		return this;
+	},
 	login : function(challenge, hash)
 	{
 		var me = this;
+
+
+		if(!me.credentials || !me.credentials.username || !me.credentials.password)
+			throw new Error('No credentials provided');
+
 
 		return new $promise(function(resolve, reject)
 		{
@@ -153,25 +177,4 @@ FTDBClient.prototype =
 
 };
 
-
-
-
-
-try
-{
-	var FTDB = new FTDBClient(require('./config'));
-	FTDB.login()
-	.then(function(res)
-	{
-		console.info('Connected to tracker');
-
-	})
-	.catch(function(res)
-	{
-		console.error('Connection error', res);
-	});
-}
-catch(e)
-{
-	console.error(e)
-}
+module.exports = FTDBClient;
