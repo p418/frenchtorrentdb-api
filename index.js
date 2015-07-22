@@ -1,10 +1,13 @@
 #!/usr/bin/nodejs
 
 
-var $http = require('request'),
-	$promise = require('promise'),
-	$url = require('url'),
-	$merge = require('merge');
+var $http 		= require('request'),
+	$promise 	= require('promise'),
+	$url 		= require('url'),
+	$merge 		= require('merge'),
+	$path 		= require('path');
+
+var SearchEngine = require('./lib/SearchEngine');
 
 //$http.debug = true;
 
@@ -40,15 +43,38 @@ function FTDBClient(conf)
 		followAllRedirects : true,
 		jar : this.cookieJar
 	};
+
+
+	var engines = conf.engines||null;
+	this.loadSearchEngine(engines);
 }
 
 
 
 FTDBClient.prototype = 
 {
+	loadSearchEngine : function(conf)
+	{
+		if(conf == void 0 || conf == null)
+			var conf = require(__dirname+'/search');
+
+		this.search = {};
+		var me = this;
+		for(var engine in conf)
+		{
+			this.search['_'+engine] = new SearchEngine(engine, conf[engine], this);
+
+			Object.defineProperty(this.search, engine,
+			{
+				get : function(){ var self = me.search['_'+engine]; return self.search.bind(self); }
+			});
+		}
+
+		return this;
+	},
 	getEndpoint : function(endpointName)
 	{
-		if(!this.endpoints && this.endpoints.hasOwnProperty(endpointName))
+		if(!this.endpoints || !this.endpoints.hasOwnProperty(endpointName))
 			throw new Error(endpointName+' endpoint is undefined!');
 
 		var urlObj = $merge({}, this.host, this.endpoints[endpointName]);
@@ -72,7 +98,7 @@ FTDBClient.prototype =
 		var json = json||false;
 
 
-		var opts = { method : 'POST', url : endpoint };
+		var opts = { method : 'GET', url : endpoint };
 		$merge.recursive(opts, this.httpOptions);
 
 		return new $promise(function(resolve, reject)
@@ -132,7 +158,8 @@ FTDBClient.prototype =
 	},
 	loadCredential : function(filename)
 	{
-		this.credentials = require(process.cwd()+'/'+filename);
+		this.credentials = require($path.resolve(process.cwd(),filename));
+		//this.credentials = require(filename);
 		return this;
 	},
 	login : function(challenge, hash)

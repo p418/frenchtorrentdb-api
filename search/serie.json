@@ -15,12 +15,10 @@
 			"8" : { "values" : ["201"], "default" : null, "desc" : "TV VOSTA"}
 		}
 	},
-	{
-		"codec" : {
-					"xvid"  : { "values" : ["1"], "default" : null },
-					"x264"	: { "values" : ["1"], "default" : null },
-					"autres": { "values" : ["1"], "default" : null }
-		}
+	"codec" : {
+		"xvid"  : { "values" : ["1"], "default" : null },
+		"x264"	: { "values" : ["1"], "default" : null },
+		"autres": { "values" : ["1"], "default" : null }
 	},
 	"year" 			: null,
 	"year_end" 		: null,
@@ -28,7 +26,7 @@
 	"season_end"	: null,
 	"episode"		: null,
 	"episode_end"	: null,
-	"order_by"		: { "default" : "seeders", "values" : ["added", "size", ""] },
+	"order_by"		: { "default" : "seeders", "values" : ["added", "size"] },
 	"order"			: { "default" : "DESC", "values" : ["ASC", "DESC"] },
-
+	"name"			: null
 }

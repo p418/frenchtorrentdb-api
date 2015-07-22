@@ -1,2 +1,3 @@
 config/credentials.json
+test/testFile/credentials.json
 node_modules

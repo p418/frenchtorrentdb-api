@@ -4,7 +4,7 @@ var should = require('chai').should(),
 
 
 
-describe('Search Engine', function()
+describe('Search Engine Parameters', function()
 {
 	var conf = {
 		param1 : "value1",
@@ -13,7 +13,6 @@ describe('Search Engine', function()
 	};
 
 	var mySearch = new searchEngine('search', conf);
-
 
 	it('should allow access to new attributes with default value', function()
 	{
@@ -102,6 +101,14 @@ describe('Search Engine', function()
 
 		mySearch.toString().should.equal('param1=value1&param3=value7&param4=test&param5%5Bs%5D%5Ba%5D=a&param5%5Bs%5D%5Bb%5D=c&param5%5Bs%5D%5Bc%5D=d');
 	});
+
+
+	it('Should load complex search definition', function()
+	{
+		var search = new searchEngine('serie', require('../search/serie'));
+		search.group.should.equal('series');
+	});
+
 });
 
 
