@@ -1,0 +1,83 @@
+{
+ "name": null,
+ "search": null,
+ "exact": {
+  "default": "1",
+  "values": [
+   "1",
+   "2"
+  ],
+  "type": "select"
+ },
+ "freeleech": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Freeleech "
+ },
+ "dead": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Torrents morts \n\t"
+ },
+ "adv_cat": {
+  "a": {
+   "1": {
+    "default": null,
+    "values": [
+     "102"
+    ],
+    "type": "checkbox",
+    "desc": "PC"
+   },
+   "2": {
+    "default": null,
+    "values": [
+     "178"
+    ],
+    "type": "checkbox",
+    "desc": "PS3"
+   },
+   "3": {
+    "default": null,
+    "values": [
+     "108"
+    ],
+    "type": "checkbox",
+    "desc": "XBOX"
+   },
+   "4": {
+    "default": null,
+    "values": [
+     "105"
+    ],
+    "type": "checkbox",
+    "desc": "WII"
+   },
+   "5": {
+    "default": null,
+    "values": [
+     "107"
+    ],
+    "type": "checkbox",
+    "desc": "PSP"
+   },
+   "6": {
+    "default": null,
+    "values": [
+     "104"
+    ],
+    "type": "checkbox",
+    "desc": "DS"
+   }
+  }
+ },
+ "submit": null,
+ "section": "TORRENTS",
+ "group": "jeux"
+}

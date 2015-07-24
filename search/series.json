@@ -1,0 +1,302 @@
+{
+ "name": null,
+ "search": null,
+ "exact": {
+  "default": "1",
+  "values": [
+   "1",
+   "2"
+  ],
+  "type": "select"
+ },
+ "freeleech": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Freeleech "
+ },
+ "dead": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Torrents morts \n\t"
+ },
+ "adv_cat": {
+  "s": {
+   "1": {
+    "default": null,
+    "values": [
+     "95"
+    ],
+    "type": "checkbox",
+    "desc": "TV VF"
+   },
+   "2": {
+    "default": null,
+    "values": [
+     "190"
+    ],
+    "type": "checkbox",
+    "desc": "TV HD FR"
+   },
+   "3": {
+    "default": null,
+    "values": [
+     "101"
+    ],
+    "type": "checkbox",
+    "desc": "TV VOSTFR"
+   },
+   "4": {
+    "default": null,
+    "values": [
+     "191"
+    ],
+    "type": "checkbox",
+    "desc": "TV HD VOSTFR"
+   },
+   "5": {
+    "default": null,
+    "values": [
+     "197"
+    ],
+    "type": "checkbox",
+    "desc": "TV VO"
+   },
+   "6": {
+    "default": null,
+    "values": [
+     "198"
+    ],
+    "type": "checkbox",
+    "desc": "DVD-R TV"
+   },
+   "7": {
+    "default": null,
+    "values": [
+     "199"
+    ],
+    "type": "checkbox",
+    "desc": "TV PACK"
+   },
+   "8": {
+    "default": null,
+    "values": [
+     "201"
+    ],
+    "type": "checkbox",
+    "desc": "TV VOSTA"
+   }
+  }
+ },
+ "submit": null,
+ "adv_genre": [
+  null,
+  {
+   "default": null,
+   "values": [
+    "Action"
+   ],
+   "type": "checkbox",
+   "desc": "Action"
+  },
+  {
+   "default": null,
+   "values": [
+    "Adventure"
+   ],
+   "type": "checkbox",
+   "desc": "Aventure"
+  },
+  {
+   "default": null,
+   "values": [
+    "Animation"
+   ],
+   "type": "checkbox",
+   "desc": "Animation"
+  },
+  {
+   "default": null,
+   "values": [
+    "Biography"
+   ],
+   "type": "checkbox",
+   "desc": "Biographie"
+  },
+  {
+   "default": null,
+   "values": [
+    "Comedy"
+   ],
+   "type": "checkbox",
+   "desc": "Com�die"
+  },
+  {
+   "default": null,
+   "values": [
+    "Crime"
+   ],
+   "type": "checkbox",
+   "desc": "Crime"
+  },
+  {
+   "default": null,
+   "values": [
+    "Documentary"
+   ],
+   "type": "checkbox",
+   "desc": "Docu"
+  },
+  {
+   "default": null,
+   "values": [
+    "Drama"
+   ],
+   "type": "checkbox",
+   "desc": "Drame"
+  },
+  {
+   "default": null,
+   "values": [
+    "Family"
+   ],
+   "type": "checkbox",
+   "desc": "Famille"
+  },
+  {
+   "default": null,
+   "values": [
+    "Fantasy"
+   ],
+   "type": "checkbox",
+   "desc": "Fantaisie"
+  },
+  {
+   "default": null,
+   "values": [
+    "History"
+   ],
+   "type": "checkbox",
+   "desc": "Histoire"
+  },
+  {
+   "default": null,
+   "values": [
+    "Horror"
+   ],
+   "type": "checkbox",
+   "desc": "Horreur"
+  },
+  {
+   "default": null,
+   "values": [
+    "Music"
+   ],
+   "type": "checkbox",
+   "desc": "Musique"
+  },
+  {
+   "default": null,
+   "values": [
+    "Mystery"
+   ],
+   "type": "checkbox",
+   "desc": "Myst�re"
+  },
+  {
+   "default": null,
+   "values": [
+    "Romance"
+   ],
+   "type": "checkbox",
+   "desc": "Romance"
+  },
+  {
+   "default": null,
+   "values": [
+    "Sci-Fi"
+   ],
+   "type": "checkbox",
+   "desc": "Sci-fiction"
+  },
+  {
+   "default": null,
+   "values": [
+    "Sport"
+   ],
+   "type": "checkbox",
+   "desc": "Sport"
+  },
+  {
+   "default": null,
+   "values": [
+    "Thriller"
+   ],
+   "type": "checkbox",
+   "desc": "Thriller"
+  },
+  {
+   "default": null,
+   "values": [
+    "War"
+   ],
+   "type": "checkbox",
+   "desc": "Guerre"
+  },
+  {
+   "default": null,
+   "values": [
+    "Western"
+   ],
+   "type": "checkbox",
+   "desc": "Western"
+  }
+ ],
+ "year": null,
+ "year_end": null,
+ "season": null,
+ "season_end": null,
+ "episode": null,
+ "episode_end": null,
+ "exlude_fastsub": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Exclure FASTSUB"
+ },
+ "codec": {
+  "xvid": {
+   "default": null,
+   "values": [
+    "1"
+   ],
+   "type": "checkbox",
+   "desc": " XviD "
+  },
+  "x264": {
+   "default": null,
+   "values": [
+    "2"
+   ],
+   "type": "checkbox",
+   "desc": " x264 "
+  },
+  "autres": {
+   "default": null,
+   "values": [
+    "3"
+   ],
+   "type": "checkbox",
+   "desc": " Autres "
+  }
+ },
+ "section": "TORRENTS",
+ "group": "series"
+}

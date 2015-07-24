@@ -1,0 +1,75 @@
+{
+ "name": null,
+ "search": null,
+ "exact": {
+  "default": "1",
+  "values": [
+   "1",
+   "2"
+  ],
+  "type": "select"
+ },
+ "freeleech": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Freeleech "
+ },
+ "dead": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Torrents morts \n\t"
+ },
+ "adv_cat": {
+  "s": {
+   "1": {
+    "default": null,
+    "values": [
+     "129"
+    ],
+    "type": "checkbox",
+    "desc": "Documentaires"
+   },
+   "2": {
+    "default": null,
+    "values": [
+     "188"
+    ],
+    "type": "checkbox",
+    "desc": "Sports"
+   },
+   "3": {
+    "default": null,
+    "values": [
+     "88"
+    ],
+    "type": "checkbox",
+    "desc": "Spectacles"
+   },
+   "4": {
+    "default": null,
+    "values": [
+     "128"
+    ],
+    "type": "checkbox",
+    "desc": "ANiMES"
+   },
+   "5": {
+    "default": null,
+    "values": [
+     "200"
+    ],
+    "type": "checkbox",
+    "desc": "T�l�vision"
+   }
+  }
+ },
+ "submit": null,
+ "section": "TORRENTS",
+ "group": "tv"
+}

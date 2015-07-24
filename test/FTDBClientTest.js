@@ -63,10 +63,10 @@ describe('FTDB Tracker Client', function()
 			FTDB.login()
 			.then(function(res)
 			{
-				if(res.success)
+				if(res)
 					next()
 				else
-					next(new Error(res));
+					next(new Error('Login failed'));
 
 			}).catch(next);
 		});
@@ -92,6 +92,17 @@ describe('FTDB Tracker Client', function()
 				})
 				.catch(next);
 		});
+
+		it('should be able to parse a new search form', function(next)
+		{
+			FTDB.getSearchFormDefinition('films').then(function(def)
+			{
+				def.should.include.keys('name', 'adv_cat', 'group');
+				next();
+			}, next);
+		});
+
+
 	});
 });
 

@@ -1,0 +1,280 @@
+{
+ "name": null,
+ "search": null,
+ "exact": {
+  "default": "1",
+  "values": [
+   "1",
+   "2"
+  ],
+  "type": "select"
+ },
+ "freeleech": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Freeleech "
+ },
+ "dead": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Torrents morts \n\t"
+ },
+ "adv_cat": {
+  "m": {
+   "1": {
+    "default": null,
+    "values": [
+     "71"
+    ],
+    "type": "checkbox",
+    "desc": "DVDRip"
+   },
+   "2": {
+    "default": null,
+    "values": [
+     "80"
+    ],
+    "type": "checkbox",
+    "desc": "DVDRip VOSTFR"
+   },
+   "3": {
+    "default": null,
+    "values": [
+     "82"
+    ],
+    "type": "checkbox",
+    "desc": "DVD-R"
+   },
+   "4": {
+    "default": null,
+    "values": [
+     "136"
+    ],
+    "type": "checkbox",
+    "desc": "720p"
+   },
+   "5": {
+    "default": null,
+    "values": [
+     "150"
+    ],
+    "type": "checkbox",
+    "desc": "1080p"
+   },
+   "6": {
+    "default": null,
+    "values": [
+     "187"
+    ],
+    "type": "checkbox",
+    "desc": "BluRay"
+   },
+   "7": {
+    "default": null,
+    "values": [
+     "189"
+    ],
+    "type": "checkbox",
+    "desc": "BluRay 3D"
+   },
+   "8": {
+    "default": null,
+    "values": [
+     "62"
+    ],
+    "type": "checkbox",
+    "desc": "Cam/TS"
+   },
+   "9": {
+    "default": null,
+    "values": [
+     "81"
+    ],
+    "type": "checkbox",
+    "desc": "R5"
+   },
+   "10": {
+    "default": null,
+    "values": [
+     "63"
+    ],
+    "type": "checkbox",
+    "desc": "DVDSCR"
+   }
+  }
+ },
+ "submit": null,
+ "adv_genre": [
+  null,
+  {
+   "default": null,
+   "values": [
+    "Action"
+   ],
+   "type": "checkbox",
+   "desc": "Action"
+  },
+  {
+   "default": null,
+   "values": [
+    "Adventure"
+   ],
+   "type": "checkbox",
+   "desc": "Aventure"
+  },
+  {
+   "default": null,
+   "values": [
+    "Animation"
+   ],
+   "type": "checkbox",
+   "desc": "Animation"
+  },
+  {
+   "default": null,
+   "values": [
+    "Biography"
+   ],
+   "type": "checkbox",
+   "desc": "Biographie"
+  },
+  {
+   "default": null,
+   "values": [
+    "Comedy"
+   ],
+   "type": "checkbox",
+   "desc": "Com�die"
+  },
+  {
+   "default": null,
+   "values": [
+    "Crime"
+   ],
+   "type": "checkbox",
+   "desc": "Crime"
+  },
+  {
+   "default": null,
+   "values": [
+    "Documentary"
+   ],
+   "type": "checkbox",
+   "desc": "Docu"
+  },
+  {
+   "default": null,
+   "values": [
+    "Drama"
+   ],
+   "type": "checkbox",
+   "desc": "Drame"
+  },
+  {
+   "default": null,
+   "values": [
+    "Family"
+   ],
+   "type": "checkbox",
+   "desc": "Famille"
+  },
+  {
+   "default": null,
+   "values": [
+    "Fantasy"
+   ],
+   "type": "checkbox",
+   "desc": "Fantaisie"
+  },
+  {
+   "default": null,
+   "values": [
+    "History"
+   ],
+   "type": "checkbox",
+   "desc": "Histoire"
+  },
+  {
+   "default": null,
+   "values": [
+    "Horror"
+   ],
+   "type": "checkbox",
+   "desc": "Horreur"
+  },
+  {
+   "default": null,
+   "values": [
+    "Music"
+   ],
+   "type": "checkbox",
+   "desc": "Musique"
+  },
+  {
+   "default": null,
+   "values": [
+    "Mystery"
+   ],
+   "type": "checkbox",
+   "desc": "Myst�re"
+  },
+  {
+   "default": null,
+   "values": [
+    "Romance"
+   ],
+   "type": "checkbox",
+   "desc": "Romance"
+  },
+  {
+   "default": null,
+   "values": [
+    "Sci-Fi"
+   ],
+   "type": "checkbox",
+   "desc": "Sci-fiction"
+  },
+  {
+   "default": null,
+   "values": [
+    "Sport"
+   ],
+   "type": "checkbox",
+   "desc": "Sport"
+  },
+  {
+   "default": null,
+   "values": [
+    "Thriller"
+   ],
+   "type": "checkbox",
+   "desc": "Thriller"
+  },
+  {
+   "default": null,
+   "values": [
+    "War"
+   ],
+   "type": "checkbox",
+   "desc": "Guerre"
+  },
+  {
+   "default": null,
+   "values": [
+    "Western"
+   ],
+   "type": "checkbox",
+   "desc": "Western"
+  }
+ ],
+ "year": null,
+ "year_end": null,
+ "section": "TORRENTS",
+ "group": "films"
+}

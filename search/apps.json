@@ -1,0 +1,75 @@
+{
+ "name": null,
+ "search": null,
+ "exact": {
+  "default": "1",
+  "values": [
+   "1",
+   "2"
+  ],
+  "type": "select"
+ },
+ "freeleech": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Freeleech "
+ },
+ "dead": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Torrents morts \n\t"
+ },
+ "adv_cat": {
+  "g": {
+   "1": {
+    "default": null,
+    "values": [
+     "111"
+    ],
+    "type": "checkbox",
+    "desc": "Windows"
+   },
+   "2": {
+    "default": null,
+    "values": [
+     "112"
+    ],
+    "type": "checkbox",
+    "desc": "Mac"
+   },
+   "3": {
+    "default": null,
+    "values": [
+     "177"
+    ],
+    "type": "checkbox",
+    "desc": "Android"
+   },
+   "4": {
+    "default": null,
+    "values": [
+     "109"
+    ],
+    "type": "checkbox",
+    "desc": "Ipod/Iphone"
+   },
+   "5": {
+    "default": null,
+    "values": [
+     "110"
+    ],
+    "type": "checkbox",
+    "desc": "Autres"
+   }
+  }
+ },
+ "submit": null,
+ "section": "TORRENTS",
+ "group": "apps"
+}

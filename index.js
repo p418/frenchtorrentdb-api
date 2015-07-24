@@ -5,7 +5,10 @@ var $http 		= require('request'),
 	$promise 	= require('promise'),
 	$url 		= require('url'),
 	$merge 		= require('merge'),
-	$path 		= require('path');
+	$path 		= require('path'),
+	$qs 		= require('qs'),
+	$cheerio	= require('cheerio'),
+	$util		= require('util');
 
 var SearchEngine = require('./lib/SearchEngine');
 
@@ -27,6 +30,8 @@ function FTDBClient(conf)
 	this.endpoints 		= conf.endpoints||{};
 	this.credentials	= conf.credentials||{};
 	this.cookieJar 		= $http.jar();
+	this.isLogged		= false;
+	this.challenge 		= null;
 	this.httpOptions	= 
 	{
 		headers :
@@ -53,6 +58,11 @@ function FTDBClient(conf)
 
 FTDBClient.prototype = 
 {
+	checkLoggedStatus : function()
+	{
+		if(this.challenge && !this.isLogged)
+			throw new Error('You arent logged in');
+	},
 	loadSearchEngine : function(conf)
 	{
 		if(conf == void 0 || conf == null)
@@ -66,7 +76,7 @@ FTDBClient.prototype =
 
 			Object.defineProperty(this.search, engine,
 			{
-				get : function(){ var self = me.search['_'+engine]; return self.search.bind(self); }
+				get : function(){ var self = me.search['_'+engine]; return self.search?self.search.bind(self):self.search; }
 			});
 		}
 
@@ -95,10 +105,13 @@ FTDBClient.prototype =
 	},
 	get : function(endpoint, json)
 	{ 
-		var json = json||false;
 
+		this.checkLoggedStatus();
 
-		var opts = { method : 'GET', url : endpoint };
+		var json 	= json||false,
+			opts 	= { method : 'GET', url : endpoint },
+			me 		= this;
+
 		$merge.recursive(opts, this.httpOptions);
 
 		return new $promise(function(resolve, reject)
@@ -106,10 +119,10 @@ FTDBClient.prototype =
 			$http(opts, function(err, response, body)
 			{
 				if(err)
-					reject(err);
+					reject.call(me, err);
 				else
 				{
-					resolve(json?JSON.parse(body):body);
+					resolve.call(me, json?JSON.parse(body):body);
 				}
 			}); 
 		});
@@ -128,12 +141,13 @@ FTDBClient.prototype =
 				else
 					reject(res);
 			})
-			.catch(reject);	
+			.catch(reject.bind(me));	
 		});
 		
 	},
 	post : function(endpoint, form)
 	{
+		this.checkLoggedStatus();
 
 		var me 		= this, 
 			opts 	= $merge.recursive({ method : 'POST', url : endpoint, form : form }, me.httpOptions);
@@ -143,9 +157,9 @@ FTDBClient.prototype =
 			$http(opts, function(err, response, body)
 			{
 				if(err)
-					reject(err);
+					reject.call(me, err);
 				else
-					resolve(body);
+					resolve.call(me, body);
 			})
 		});
 	},
@@ -178,6 +192,7 @@ FTDBClient.prototype =
 			{
 				if(challenge.challenge && challenge.hash)
 				{
+
 					me.post(me.getEndpoint('login'),
 					{
 						username 		: me.credentials.username,
@@ -189,17 +204,83 @@ FTDBClient.prototype =
 					{ 
 						var resp = JSON.parse(resp);
 						if(resp && resp.success)
-							resolve(resp);
+						{
+							me.challenge = challenge;
+							resolve.call(me, me.isLogged=true);
+						}
 						else
-							reject(resp);
+							reject.call(me, resp);
 					})
-					.catch(reject);
+					.catch(reject.bind(me));
 				}
 				else
-					reject('No challenge/hash found');
+					reject.call(me, 'No challenge/hash found');
 			})
-			.catch(reject);
+			.catch(reject.bind(me));
 		});
+	},
+	getSearchFormDefinition : function(name)
+	{
+		var name 	= name||'index',
+			url 	= this.getEndpoint('form')+'&group='+name;
+
+
+		return new $promise(function(resolve, reject)
+		{
+			this.get(url)
+			.then(function(html)
+			{
+				var $ 		= $cheerio.load(html),
+					inputs 	= $('#form :input'),
+					fields	= {},
+					script	= [];
+
+				var getScript = function(name, val)
+				{
+					var m;if(m=/^(.+)\[\]$/.exec(name))
+						return $util.format('obj.%s.push(%s) ;', m[1], JSON.stringify(val)); 		
+
+					name = name.replace(/(\[[^'"\]]+\])/g, function(match){  return match.replace('[', '[\'').replace(']', '\']'); });
+					return $util.format('obj.%s=%s;', name, JSON.stringify(val)); 
+				}
+
+				inputs.each(function(index, input)
+				{
+					var input 	= $(input),
+						tagname = input[0].tagName,
+						name 	= input.attr('name'),
+						type 	= input.attr('type')||'text',
+						value 	= input.val()||null,
+						desc	= input.next().text()||(input[0].nextSibling?input[0].nextSibling.nodeValue:'');
+
+
+					fields[name] = null;
+					switch(tagname)
+					{
+						case 'input':
+							switch(type)
+							{
+								case 'hidden'	: script.push(getScript(name, value));	break;
+								case 'text'		: script.push(getScript(name, value?{ default: value }:null)); break;
+								case 'checkbox' : script.push(getScript(name, { default : null, values : [value], type : type, desc : desc })); break; 
+							}
+						break;
+
+						case 'select':
+							var vals = [];
+							input.find('option').each(function(idx, opt){ vals.push($(opt).val());});
+							script.push(getScript(name, {default : value, values : vals, type : tagname }));
+						break;
+					}
+				});
+
+				var def = ($qs.parse($qs.stringify(fields,  { strictNullHandling: true }),  { strictNullHandling: true, arrayLimit : 0 }));
+
+				resolve((new Function('obj',script.join('\n')+' return obj;'))(def)) ;
+			})
+			.catch(reject)
+
+		}.bind(this));
 	}
 
 };

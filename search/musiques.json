@@ -1,0 +1,51 @@
+{
+ "name": null,
+ "search": null,
+ "exact": {
+  "default": "1",
+  "values": [
+   "1",
+   "2"
+  ],
+  "type": "select"
+ },
+ "freeleech": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Freeleech "
+ },
+ "dead": {
+  "default": null,
+  "values": [
+   "1"
+  ],
+  "type": "checkbox",
+  "desc": " Torrents morts \n\t"
+ },
+ "adv_cat": {
+  "m": {
+   "1": {
+    "default": null,
+    "values": [
+     "117"
+    ],
+    "type": "checkbox",
+    "desc": "MP3"
+   },
+   "2": {
+    "default": null,
+    "values": [
+     "194"
+    ],
+    "type": "checkbox",
+    "desc": "FLAC"
+   }
+  }
+ },
+ "submit": null,
+ "section": "TORRENTS",
+ "group": "musiques"
+}
