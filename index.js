@@ -73,10 +73,9 @@ FTDBClient.prototype =
 		for(var engine in conf)
 		{
 			this.search['_'+engine] = new SearchEngine(engine, conf[engine], this);
-
 			Object.defineProperty(this.search, engine,
 			{
-				get : function(){ var self = me.search['_'+engine]; return self.search?self.search.bind(self):self.search; }
+				get : (function(engineName){ return function(){ var self = me.search['_'+engineName]; return self.search.bind(self); }; })(engine)
 			});
 		}
 
@@ -253,6 +252,8 @@ FTDBClient.prototype =
 						value 	= input.val()||null,
 						desc	= input.next().text()||(input[0].nextSibling?input[0].nextSibling.nodeValue:'');
 
+					if(name == 'search')
+						return;
 
 					fields[name] = null;
 					switch(tagname)

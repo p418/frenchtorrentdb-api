@@ -78,8 +78,9 @@ describe('FTDB Tracker Client', function()
 	{
 		it('should have serie search engine loaded', function()
 		{
-			(FTDB.search._serie instanceof SearchEngine).should.be.true;
-			(typeof FTDB.search.serie == 'function').should.be.true;
+			FTDB.search._serie.should.be.instanceof(SearchEngine);
+			FTDB.search._serie._name.should.be.equal('serie');
+			FTDB.search.serie.should.be.a('function');
 		});
 
 		it('should be able to perform search', function(next)
@@ -87,6 +88,7 @@ describe('FTDB Tracker Client', function()
 			FTDB.search.serie({ name : 'EVERYBODY.HATES.CHRIS.iNTEGRALE.FRENCH.DVDRIP.XVID-NoTaG' })
 				.then(function(result)
 				{
+					result.should.be.instanceof(SearchResult);
 					result.rowCount().should.be.equal(1);
 					next();
 				})
