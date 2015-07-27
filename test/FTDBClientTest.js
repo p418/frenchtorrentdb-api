@@ -90,10 +90,46 @@ describe('FTDB Tracker Client', function()
 				{
 					result.should.be.instanceof(SearchResult);
 					result.rowCount().should.be.equal(1);
+
 					next();
 				})
 				.catch(next);
 		});
+
+
+		it('should fetch search using different fetch style', function(next)
+		{
+			FTDB.search.serie({ name : 'walking' })
+				.then(function(result)
+				{
+
+					//console.log('SearchResult.FETCH_JSON: return next row as anonymous object with column names as properties');
+					result.fetch(SearchResult.FETCH_JSON).should.have.any.keys('torrents_name', 'torrents_download_links');
+
+					//console.log('SearchResult.FETCH_XML: return next row as XML fragment named "torrent" with column names as sub element ');
+					result.fetch(SearchResult.FETCH_XML, 'torrent').should.be.a('string').and.contains('torrents_name');
+
+					//console.log('SearchResult.FETCH_ARRAY: return next row as an array indexed by number');
+					result.fetch(SearchResult.FETCH_ARRAY).should.be.an('array');
+
+					next();
+				})
+				.catch(next);
+		});
+
+		
+		/**it('should fetch result set as rss feed', function(next)
+		{
+			FTDB.search.series({ name : 'game of', season : '01', episode : '01' })
+				.then(function(result)
+				{
+					console.log(result.fetchAll(SearchResult.FETCH_JSON));
+					next();
+				})
+				.catch(next);
+		});**/
+		
+
 
 		it('should be able to parse a new search form', function(next)
 		{

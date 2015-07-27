@@ -230,7 +230,7 @@ FTDBClient.prototype =
 			.then(function(html)
 			{
 				var $ 		= $cheerio.load(html),
-					inputs 	= $('#form :input'),
+					inputs 	= $('#form :input, .results_index :input'),
 					fields	= {},
 					script	= [];
 

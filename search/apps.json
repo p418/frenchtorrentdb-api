@@ -70,5 +70,26 @@
  },
  "submit": null,
  "section": "TORRENTS",
- "group": "apps"
+ "group": "apps",
+ "order_by": {
+  "default": "added",
+  "values": [
+   "",
+   "added",
+   "size",
+   "seeders",
+   "leechers",
+   "completed",
+   "name"
+  ],
+  "type": "select"
+ },
+ "order": {
+  "default": "DESC",
+  "values": [
+   "DESC",
+   "ASC"
+  ],
+  "type": "select"
+ }
 }

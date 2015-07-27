@@ -297,5 +297,26 @@
   }
  },
  "section": "TORRENTS",
- "group": "series"
+ "group": "series",
+ "order_by": {
+  "default": "added",
+  "values": [
+   "",
+   "added",
+   "size",
+   "seeders",
+   "leechers",
+   "completed",
+   "name"
+  ],
+  "type": "select"
+ },
+ "order": {
+  "default": "DESC",
+  "values": [
+   "DESC",
+   "ASC"
+  ],
+  "type": "select"
+ }
 }

@@ -275,5 +275,26 @@
  "year": null,
  "year_end": null,
  "section": "TORRENTS",
- "group": "films"
+ "group": "films",
+ "order_by": {
+  "default": "added",
+  "values": [
+   "",
+   "added",
+   "size",
+   "seeders",
+   "leechers",
+   "completed",
+   "name"
+  ],
+  "type": "select"
+ },
+ "order": {
+  "default": "DESC",
+  "values": [
+   "DESC",
+   "ASC"
+  ],
+  "type": "select"
+ }
 }
