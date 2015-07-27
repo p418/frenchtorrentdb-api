@@ -303,7 +303,7 @@ Returns an array containing all of the result set rows
 	<dd>
 		<dl>
 			<dt>fetchStyle</dt>
-			<dd>Controls the contents of the returned array as documented in [SearchResult#fetch()](#searchresultfetchallfetchstyle-fetchoptions)</dd>
+			<dd>Controls the contents of the returned array as documented in [SearchResult#fetch()](https://github.com/p418/frenchtorrentdb-api#searchresultfetchfetchstyle-fetchoptions)</dd>
 		</dl>		
 	</dd>
 	<dt>return values</dt>
