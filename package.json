@@ -1,6 +1,6 @@
 {
   "name": "frenchtorrentdb-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Frenchtorrent pseudo rest api",
   "main": "index.js",
   "scripts": {
