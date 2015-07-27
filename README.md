@@ -11,7 +11,10 @@ npm install frenchtorrentdb-api
 
 ## Usage
 ```js
-var FTDB = require('frenchtorrentdb-api'); //instanciate a new Client.
+var FTDBClient = require('frenchtorrentdb-api'); 
+
+
+var FTDB = new FTDBClient(); //instanciate a new Client.
 ```
 
 ### Credential
