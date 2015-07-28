@@ -107,14 +107,11 @@ Represents a result set associated to a search action
 ### Predefined Constants
 The constants below are defined by the module.
 
-<dl>
-	<dt>SearchResult.FETCH_JSON</dt>
-	<dd>Specifies that the fetch method shall return each row as an object with property names that correspond to column names returned in the result set.</dd>
-	<dt>SearchResult.FETCH_ARRAY</dt>
-	<dd>Specifies that the fetch method shall return each row as an array indexed by column number as returned in the corresponding result set, starting at column 0.</dd>
-	<dt>SearchResult.FETCH_XML</dt>
-	<dd>Specifies that the fetch method shall return each row as a xml fragment with sub element tagname that correspond to column names returned in the result set.</dd>
-</dl>
+Constant | Description
+--- | --- 
+SearchResult.FETCH_JSON | Specifies that the fetch method shall return each row as an object with property names that correspond to column names returned in the result set.
+SearchResult.FETCH_ARRAY | Specifies that the fetch method shall return each row as an array indexed by column number as returned in the corresponding result set, starting at column 0.
+SearchResult.FETCH_XML | Specifies that the fetch method shall return each row as a xml fragment with sub element tagname that correspond to column names returned in the result set.
 
 
 ### Prototype Methods
@@ -124,21 +121,21 @@ These methods are invoked on a `SearchResult` instance by calling `SearchResult.
 ### SearchResult#fetch([fetchStyle[, fetchOptions])
 Fetches the next row from a result set.
 
-<dl>
-	<dt>parameters</dt>
-	<dd>
-		<dl>
-			<dt>fetchStyle</dt>
-			<dd>Controls how row will be returned to the call. This value must be one of the SearchResult.FETCH_* constants. (default: SearchResult.FETCH_JSON)</dd>
-			<dt>fetchOptions</dt>
-			<dd>Extra parameter passed to row fetcher. (ie: tagname for XML fetch, etc) </dd>
-		</dl>		
-	</dd>
-	<dt>return values</dt>
-	<dd>
-		The return value of this method depends on the fetch type. In all cases, *null* is returned on faillure.
-	</dd>
-</dl>
+<table>
+	<tr>
+		<th rowspan="2">Parameters</th>
+		<td>fetchStyle</td>
+		<td>Controls how row will be returned to the call. This value must be one of the SearchResult.FETCH_* constants. (default: SearchResult.FETCH_JSON)</td>
+	</tr>
+	<tr>
+		<td>fetchOptions</td>
+		<td>Extra parameter passed to row fetcher. (ie: tagname for XML fetch, etc) </td>
+	</tr>		
+	<tr>
+		<th>Return values</th>	
+		<td colspan="2">The return value of this method depends on the fetch type. In all cases, *null* is returned on faillure.</td>
+	</tr>
+</table>
 
 **Examples**
 
@@ -298,21 +295,27 @@ the above example will ouput:
 ### SearchResult#fetchAll([fetchStyle[, fetchOptions])
 Returns an array containing all of the result set rows
 
-<dl>
-	<dt>parameters</dt>
-	<dd>
-		<dl>
-			<dt>fetchStyle</dt>
-			<dd>Controls the contents of the returned array as documented in [SearchResult#fetch](https://github.com/p418/frenchtorrentdb-api#searchresultfetchfetchstyle-fetchoptions)</dd>
-		</dl>		
-	</dd>
-	<dt>return values</dt>
-	<dd>
-		The returned array contains all rows in the result set.
+
+<table>
+	<tr>
+		<th rowspan="2">Parameters</th>
+		<td>fetchStyle</td>
+		<td>Controls the contents of the returned array as documented in <a href="#searchresultfetchfetchstyle-fetchoptions">SearchResult#fetch()</a>
+		</td>
+	</tr>
+	<tr>
+		<td>fetchOptions</td>
+		<td>Extra parameter passed to row fetcher. (ie: tagname for XML fetch, etc) </td>
+	</tr>		
+	<tr>
+		<th>Return values</th>	
+		<td colspan="2">The returned array contains all rows in the result set.
 		The array represents each row fetched as specified by fetchStyle parameter.
 		An empty array is returned if there are zero results to fetch.
-	</dd>
-</dl>
+		</td>
+	</tr>
+</table>
+
 
 **Examples**
 
