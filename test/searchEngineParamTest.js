@@ -1,11 +1,13 @@
 var should = require('chai').should(),
-	searchEngine = require('../lib/SearchEngine');
+	searchEngine = require('../lib/SearchEngine'),
+	SearchParam = require('../lib/SearchParam');
 
 
 
 
 describe('Search Engine Parameters', function()
 {
+
 	var conf = {
 		param1 : "value1",
 		param2 : { default : 'value2', values : ['value2', 'value3', 'value4'], desc : 'multi value' },
@@ -102,11 +104,20 @@ describe('Search Engine Parameters', function()
 		mySearch.toString().should.equal('param1=value1&param3=value7&param4=test&param5%5Bs%5D%5Ba%5D=a&param5%5Bs%5D%5Bb%5D=c&param5%5Bs%5D%5Bc%5D=d');
 	});
 
-
 	it('Should load complex search definition', function()
 	{
-		var search = new searchEngine('serie', require('../search/serie'));
+		var search = new searchEngine('serie', require('../search/series'));
 		search.group.should.equal('series');
+		search.codec._params.xvid._type.should.equal('checkbox');
+		
+		search.codec.xvid = true;
+		search.codec.xvid.should.equal('1');
+
+		search.codec.xvid = 0;
+		(true).should.equal(search.codec.xvid==null);
+
+		search.adv_cat.s[1] = 1;
+		search.adv_cat.s[1].should.equal('95')
 	});
 
 });
