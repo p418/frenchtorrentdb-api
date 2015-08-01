@@ -117,7 +117,11 @@ describe('Search Engine Parameters', function()
 		(true).should.equal(search.codec.xvid==null);
 
 		search.adv_cat.s[1] = 1;
-		search.adv_cat.s[1].should.equal('95')
+		search.adv_cat.s[1].should.equal('95');
+
+
+		search.setValues({ name : 'test', codec : { xvid : true } });
+		console.log(search.toString())
 	});
 
 });
